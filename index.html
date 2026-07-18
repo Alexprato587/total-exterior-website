@@ -4,17 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Exterior Services | Free Quotes</title>
+
     <style>
         /* A few simple styles to make it look clean on your Chromebook browser */
         body { font-family: sans-serif; line-height: 1.6; margin: 0; color: #333; }
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #f8f9fa; }
         .hero { background: #2e5a44; color: white; padding: 80px 5%; text-align: center; }
         .btn { background: #e67e22; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        
+        /* Main Services Container */
+        .services { 
+            display: flex; 
+            justify-content: space-around; 
+            padding: 60px 5%; 
+            flex-wrap: wrap; 
+            gap: 25px;
+            margin-bottom: 60px;
+            height: 300px;
+            
+            /* CRUCIAL LINE: Allows individual cards to grow without forcing 
+               the other cards in the row to stretch with it */
+            align-items: flex-start; 
+        }
+
+        /* Service Box Styles */
+        .service-card { 
+            width: 30%; 
+            min-width: 280px; 
+            box-sizing: border-box; 
+            padding: 25px;
+            border-radius: 8px;
+            border: 3px solid #2e5a44; 
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            
+            /* Smoothly transitions the card box height when it expands */
+            transition: all 0.3s ease; 
+        }
+
+        .painting-bg { background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=500&q=80'); }
+        .tree-bg { background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1590130541738-958614cb69fb?auto=format&fit=crop&w=500&q=80'); }
+        .lawn-bg { background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1533460004989-cef01064af7e?auto=format&fit=crop&w=500&q=80'); }
+
+        .card-header h3 { margin-top: 0; color: #2e5a44; font-size: 1.5rem; }
+        .card-header p { color: #555; font-size: 1rem; margin-bottom: 15px; }
+
+        /* Cleaned up standard dropdown container inside the card */
+        .independent-dropdown {
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        summary {
+            font-weight: bold;
+            color: #e67e22;
+            cursor: pointer;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        summary:hover { text-decoration: underline; }
+
+        /* Text content styles inside the expanding card */
+        .dropdown-content {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.5;
+            background: rgba(0, 0, 0, 0.03);
+            padding: 12px;
+            border-radius: 4px;
+            height: 120px;
+        }
+
         .services { display: flex; justify-content: space-around; padding: 50px 5%; flex-wrap: wrap; }
         .service-card { width: 30%; min-width: 250px; text-align: center; padding: 20px; box-sizing: border-box; }
         .scheduler-section { background: #f4f6f7; padding: 50px 5%; text-align: center; }
         .calendar-box { max-width: 800px; margin: 30px auto; background: white; padding: 40px; border: 1px dashed #ccc; }
+
+        /* ========================================== */
+        /*               FOOTER STYLING               */
+        /* ========================================== */
+        .site-footer {
+            background-color: #222; /* Professional dark charcoal background */
+            color: #bbb; /* Off-white text so it's readable but soft */
+            padding: 40px 5% 20px 5%;
+            font-size: 0.9rem;
+            border-top: 4px solid #2e5a44; /* Accents the top with your main business green */
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #444; /* Subtle line separating columns from copyright */
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h4 {
+            color: #fff; /* Crisp white headers */
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-column p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* The legal fine print style */
+        .fine-print {
+            color: #777;
+            margin-top: 5px;
+            font-style: italic;
+        }
     </style> 
+    
 </head>
 <body>
 
@@ -32,20 +156,51 @@
         <a href="#schedule" class="btn">Schedule Your Free Quote</a>
     </section>
 
-    <!-- The Big Three Services -->
+    <!-- The Big Three Services with Independent Overlay Dropdowns -->
     <section class="services">
-        <div class="service-card">
-            <h3>🎨 House Painting</h3>
-            <p>Exterior painting that protects your home and boosts curb appeal.</p>
+        
+        <!-- House Painting Card -->
+        <div class="service-card painting-bg">
+            <div class="card-header">
+                <h3>🎨 House Painting</h3>
+                <p>Exterior painting that protects your home and boosts curb appeal.</p>
+            </div>
+            <details class="independent-dropdown">
+                <summary>View Pricing & Details</summary>
+                <div class="dropdown-content">
+                    <p>Complete exterior painting built to withstand the elements. We handle full pressure washing, scraping, priming, and premium top-coats to give your home a flawless, durable finish.</p>
+                </div>
+            </details>
         </div>
-        <div class="service-card">
-            <h3>🌳 Tree Work</h3>
-            <p>Safe trimming, removal, and pruning by trained local experts.</p>
+
+        <!-- Tree Work Card -->
+        <div class="service-card tree-bg">
+            <div class="card-header">
+                <h3>🌳 Tree Work</h3>
+                <p>Safe trimming, removal, and pruning by trained local experts.</p>
+            </div>
+            <details class="independent-dropdown">
+                <summary>View Pricing & Details</summary>
+                <div class="dropdown-content">
+                    <p>Safe and professional tree care. Our services include hazardous tree removal, precision trimming, limb pruning, and thorough stump grinding to keep your property safe and beautiful.</p>
+                </div>
+            </details>
         </div>
-        <div class="service-card">
-            <h3>🏡 Lawn Care</h3>
-            <p>Mowing, edging, and seasonal maintenance to keep things pristine.</p>
+
+        <!-- Lawn Care Card -->
+        <div class="service-card lawn-bg">
+            <div class="card-header">
+                <h3>🏡 Lawn Care</h3>
+                <p>Mowing, edging, and seasonal maintenance to keep things pristine.</p>
+            </div>
+            <details class="independent-dropdown">
+                <summary>View Pricing & Details</summary>
+                <div class="dropdown-content">
+                    <p>Complete seasonal maintenance packages. Weekly mowing, string trimming, crisp edging, fertilization, and fall leaf cleanups tailored to keep your turf lush and green.</p>
+                </div>
+            </details>
         </div>
+
     </section>
 
     <!-- Scheduler Section -->
@@ -59,6 +214,35 @@
             <p>For now, click to email: <a href="mailto:sales@example.com">sales@example.com</a></p>
         </div>
     </section>
+
+    <!-- The Professional Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <!-- Left Column: Quick Contact info -->
+            <div class="footer-column">
+                <h4>Get In Touch</h4>
+                <p>📞 Phone: (555) 123-4567</p>
+                <p>✉️ Email: info@exteriorservices.com</p>
+                <p>📍 Serving our local community and surrounding areas</p>
+            </div>
+
+            <!-- Right Column: Fine Print & Details -->
+            <div class="footer-column">
+                <h4>Business Hours</h4>
+                <p>Monday - Friday: 7:00 AM - 6:00 PM</p>
+                <p>Saturday: 8:00 AM - 4:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+
+        </div>
+
+        <!-- The Bottom Copyright Strip -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Premium Exterior Services. All rights reserved.</p>
+            <p class="fine-print">Licensed, bonded, and fully insured for your protection. Free estimates are subject to property inspection.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
