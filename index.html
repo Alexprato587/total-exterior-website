@@ -20,11 +20,10 @@
             flex-wrap: wrap; 
             gap: 25px;
             margin-bottom: 60px;
-            min-height: 480px;
             
-            /* CRUCIAL LINE: Allows individual cards to grow without forcing 
-               the other cards in the row to stretch with it */
-            align-items: flex-start; 
+            /* CHANGED to min-height and set all cards to stretch together symmetrically */
+            min-height: 480px;
+            align-items: stretch; 
         }
 
         /* Service Box Styles */
@@ -38,6 +37,9 @@
             background-size: cover;
             background-position: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             
             /* Smoothly transitions the card box height when it expands */
             transition: all 0.3s ease; 
@@ -54,7 +56,7 @@
         .independent-dropdown {
             border-top: 1px solid #ddd;
             padding-top: 15px;
-            margin-top: 15px;
+            margin-top: auto; /* Pushes dropdown down cleanly to line up elements */
         }
 
         summary {
@@ -76,23 +78,21 @@
             background: rgba(0, 0, 0, 0.03);
             padding: 12px;
             border-radius: 4px;
-            height: 120px;
         }
 
-        .services { display: flex; justify-content: space-around; padding: 50px 5%; flex-wrap: wrap; }
-        .service-card { width: 30%; min-width: 250px; text-align: center; padding: 20px; box-sizing: border-box; }
+        /* FIXED: Removed duplicate conflicting selectors here */
         .scheduler-section { background: #f4f6f7; padding: 50px 5%; text-align: center; }
-        .calendar-box { max-width: 800px; margin: 30px auto; background: white; padding: 40px; border: 1px dashed #ccc; }
+        .calendar-box { max-width: 800px; margin: 30px auto; background: white; padding: 40px; border: 1px dashed #ccc; box-sizing: border-box; }
 
         /* ========================================== */
         /*               FOOTER STYLING               */
         /* ========================================== */
         .site-footer {
-            background-color: #222; /* Professional dark charcoal background */
-            color: #bbb; /* Off-white text so it's readable but soft */
+            background-color: #222; 
+            color: #bbb; 
             padding: 40px 5% 20px 5%;
             font-size: 0.9rem;
-            border-top: 4px solid #2e5a44; /* Accents the top with your main business green */
+            border-top: 4px solid #2e5a44; 
         }
 
         .footer-container {
@@ -103,7 +103,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding-bottom: 30px;
-            border-bottom: 1px solid #444; /* Subtle line separating columns from copyright */
+            border-bottom: 1px solid #444; 
         }
 
         .footer-column {
@@ -112,7 +112,7 @@
         }
 
         .footer-column h4 {
-            color: #fff; /* Crisp white headers */
+            color: #fff; 
             margin-top: 0;
             margin-bottom: 15px;
             font-size: 1.1rem;
@@ -131,7 +131,6 @@
             font-size: 0.8rem;
         }
 
-        /* The legal fine print style */
         .fine-print {
             color: #777;
             margin-top: 5px;
@@ -152,7 +151,7 @@
         }
 
         .trust-container h2 {
-            color: #2e5a44; /* Main business green */
+            color: #2e5a44; 
             font-size: 2rem;
             margin-bottom: 10px;
         }
@@ -181,6 +180,7 @@
             border: 1px solid #eee;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
             transition: transform 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
         }
 
         .badge-card:hover {
@@ -212,47 +212,44 @@
         /* ========================================== */
         @media (max-width: 768px) {
             
-            /* 1. Reset the Services Grid to a Single Column */
             .services {
-                flex-direction: column; /* Stacks cards vertically instead of horizontally */
+                flex-direction: column; 
                 align-items: center;
-                height: auto; /* REMOVES the locked height so cards can grow freely on mobile */
+                height: auto; 
                 padding: 40px 5%;
                 gap: 30px;
             }
 
-            /* 2. Make each card fill the width of the phone screen */
             .service-card {
                 width: 100%;
-                max-width: 400px; /* Keeps them from getting too wide on bigger phones */
-                min-height: auto; /* Lets the card body fit mobile text perfectly */
+                max-width: 100%; 
+                min-height: auto; 
             }
 
-            /* 3. Adjust the dropdown text height so it doesn't clip on small screens */
             .dropdown-content {
-                height: auto; /* Lets the text expand naturally down without scrollbars */
+                height: auto; 
             }
 
-            /* 4. Stack the footer columns vertically */
             .footer-container {
                 flex-direction: column;
-                text-align: center; /* Centers contact info for easier thumb-tapping */
+                text-align: center; 
                 gap: 20px;
             }
             
-            /* 5. Clean up any site headers/hero sections for mobile text sizes */
             .hero h1 {
-                font-size: 1.8rem; /* Shrinks huge desktop titles so they don't break lines weirdly */
+                font-size: 1.8rem; 
             }
-            /* Add this inside your existing @media block at the bottom */
+
             .badge-grid {
                 flex-direction: column;
                 align-items: center;
                 gap: 20px;
+                width: 100%;
             }
             .badge-card {
                 width: 100%;
-                max-width: 400px;
+                max-width: 100%;
+                box-sizing: border-box;
             }
         }
     </style> 
