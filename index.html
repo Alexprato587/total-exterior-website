@@ -20,7 +20,7 @@
             flex-wrap: wrap; 
             gap: 25px;
             margin-bottom: 60px;
-            height: 300px;
+            min-height: 480px;
             
             /* CRUCIAL LINE: Allows individual cards to grow without forcing 
                the other cards in the row to stretch with it */
@@ -138,6 +138,76 @@
             font-style: italic;
         }
         /* ========================================== */
+        /*              TRUST BADGES STYLE            */
+        /* ========================================== */
+        .trust-section {
+            background-color: #ffffff;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .trust-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trust-container h2 {
+            color: #2e5a44; /* Main business green */
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .trust-subtitle {
+            color: #666;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto 45px auto;
+            line-height: 1.5;
+        }
+
+        .badge-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .badge-card {
+            flex: 1;
+            min-width: 280px;
+            padding: 30px 20px;
+            background: #fdfdfd;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .badge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(46, 90, 68, 0.08);
+            border-color: rgba(46, 90, 68, 0.2);
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .badge-card h3 {
+            color: #333;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        .badge-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        /* ========================================== */
         /*         MOBILE RESPONSIVE STYLES           */
         /* ========================================== */
         @media (max-width: 768px) {
@@ -173,6 +243,16 @@
             /* 5. Clean up any site headers/hero sections for mobile text sizes */
             .hero h1 {
                 font-size: 1.8rem; /* Shrinks huge desktop titles so they don't break lines weirdly */
+            }
+            /* Add this inside your existing @media block at the bottom */
+            .badge-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .badge-card {
+                width: 100%;
+                max-width: 400px;
             }
         }
     </style> 
@@ -239,6 +319,37 @@
             </details>
         </div>
 
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="trust-section">
+        <div class="trust-container">
+            <h2>Why Property Owners Choose Us</h2>
+            <p class="trust-subtitle">Professional craftsmanship and reliable service you can depend on for your home or business.</p>
+            
+            <div class="badge-grid">
+                <!-- Badge 1: Quality Focus -->
+                <div class="badge-card">
+                    <div class="badge-icon">✨</div>
+                    <h3>Attention to Detail</h3>
+                    <p>We treat your home like our own. From clean paint lines to leaving your yard spotless, we take pride in doing the job right the first time.</p>
+                </div>
+
+                <!-- Badge 2: Pricing Focus -->
+                <div class="badge-card">
+                    <div class="badge-icon">💵</div>
+                    <h3>Free Upfront Estimates</h3>
+                    <p>Transparent pricing with zero hidden fees. We provide detailed, honest walkthroughs before any work begins.</p>
+                </div>
+
+                <!-- Badge 3: Community Focus -->
+                <div class="badge-card">
+                    <div class="badge-icon">📍</div>
+                    <h3>Locally Owned & Operated</h3>
+                    <p>We live and work right here in your community. Proudly serving our neighbors with reliable, friendly service.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Scheduler Section -->
