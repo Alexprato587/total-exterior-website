@@ -21,9 +21,9 @@
             gap: 25px;
             margin-bottom: 60px;
             
-            /* CHANGED to min-height and set all cards to stretch together symmetrically */
-            min-height: 480px;
-            align-items: stretch; 
+            /* FIX FOR PC WHITE SPACE: 
+               Allows each card to stay tight around its text instead of stretching */
+            align-items: flex-start; 
         }
 
         /* Service Box Styles */
@@ -31,17 +31,14 @@
             width: 30%; 
             min-width: 280px; 
             box-sizing: border-box; 
-            padding: 25px;
+            padding: 25px; 
             border-radius: 8px;
             border: 3px solid #2e5a44; 
             background-size: cover;
             background-position: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             
-            /* Smoothly transitions the card box height when it expands */
+            /* Smoothly expands the card downward on PC when clicked */
             transition: all 0.3s ease; 
         }
 
@@ -56,7 +53,7 @@
         .independent-dropdown {
             border-top: 1px solid #ddd;
             padding-top: 15px;
-            margin-top: auto; /* Pushes dropdown down cleanly to line up elements */
+            margin-top: 15px; /* Keeps a perfectly tight 15px space below the text */
         }
 
         summary {
@@ -69,7 +66,6 @@
 
         summary:hover { text-decoration: underline; }
 
-        /* Text content styles inside the expanding card */
         .dropdown-content {
             margin-top: 12px;
             font-size: 0.9rem;
@@ -80,7 +76,6 @@
             border-radius: 4px;
         }
 
-        /* FIXED: Removed duplicate conflicting selectors here */
         .scheduler-section { background: #f4f6f7; padding: 50px 5%; text-align: center; }
         .calendar-box { max-width: 800px; margin: 30px auto; background: white; padding: 40px; border: 1px dashed #ccc; box-sizing: border-box; }
 
@@ -271,7 +266,7 @@
         <a href="#schedule" class="btn">Schedule Your Free Quote</a>
     </section>
 
-    <!-- The Big Three Services with Independent Overlay Dropdowns -->
+    <!-- The Big Three Services Section -->
     <section class="services">
         
         <!-- House Painting Card -->
