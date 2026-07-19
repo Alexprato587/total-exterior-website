@@ -42,9 +42,26 @@
             transition: all 0.3s ease; 
         }
 
-        .painting-bg { background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=500&q=80'); }
-        .tree-bg { background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1590130541738-958614cb69fb?auto=format&fit=crop&w=500&q=80'); }
-        .lawn-bg { background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1533460004989-cef01064af7e?auto=format&fit=crop&w=500&q=80'); }
+        /* THE FIX: Full-Height "Zoom to Fill" Backgrounds */
+        .painting-bg, .tree-bg, .lawn-bg {
+            background-size: cover; /* Zooms/scales image to fully cover the vertical and horizontal area */
+            background-position: center top; /* Anchors best part of photo to top text; centers the horizontal view */
+            background-repeat: no-repeat;
+            
+            /* If you want the reveal/scrolling magic when expanding: */
+            /* background-attachment: fixed; */
+        }
+
+        .painting-bg { 
+            background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('paint.png'); 
+        }
+        .tree-bg { 
+            background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('tree.png'); 
+        }
+        .lawn-bg { 
+            background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('lawn.png'); 
+        }
+
 
         .card-header h3 { margin-top: 0; color: #2e5a44; font-size: 1.5rem; }
         .card-header p { color: #555; font-size: 1rem; margin-bottom: 15px; }
