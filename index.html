@@ -9,7 +9,9 @@
         /* A few simple styles to make it look clean on your Chromebook browser */
         body { font-family: sans-serif; line-height: 1.6; margin: 0; color: #333; }
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #f8f9fa; }
-        .hero { background: #2e5a44; color: white; padding: 80px 5%; text-align: center; }
+        
+        
+        
         .btn { background: #e67e22; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; }
         
         /* Main Services Container */
@@ -264,6 +266,109 @@
                 box-sizing: border-box;
             }
         }
+
+
+        /* ========================================== */
+        /*          SPLIT-SCREEN HERO STYLES          */
+        /* ========================================== */
+        .split-hero {
+            display: flex;
+            min-height: 500px;
+            background: #2e5a44;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Left Side Setup */
+        .hero-text-side {
+            flex: 1;
+            padding: 60px 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .hero-text-side h1 {
+            font-size: 2.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text-side p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: #e2efebd4;
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            align-self: flex-start;
+        }
+
+        /* Right Side Carousel Setup */
+        .hero-image-side {
+            flex: 1;
+            position: relative;
+            min-height: 100%;
+        }
+
+        .carousel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: heroCrossfade 15s infinite ease-in-out;
+        }
+
+        /* Hooking up your premium service images to the slideshow */
+        .slide-1 { 
+            background-image: url('lawn.png?v=2'); 
+            animation-delay: 0s;
+        }
+        .slide-2 { 
+            background-image: url('tree.png?v=2'); 
+            animation-delay: 5s; /* Shows second */
+        }
+        .slide-3 { 
+            background-image: url('paint.png?v=2'); 
+            animation-delay: 10s; /* Shows third */
+        }
+
+        /* THE MATHEMATICAL CROSSFADE ANIMATION */
+        /* Total time: 15 seconds. Each image stays solid, then fades out */
+        @keyframes heroCrossfade {
+            0%   { opacity: 0; }
+            5%   { opacity: 1; }  /* Fade in */
+            33%  { opacity: 1; }  /* Stay visible */
+            38%  { opacity: 0; }  /* Fade out */
+            100% { opacity: 0; }  /* Stay hidden until loop resets */
+        }
+
+        /* Mobile Adjustment: Stack them vertically so it doesn't squish */
+        @media (max-width: 768px) {
+            .split-hero {
+                flex-direction: column;
+            }
+            .hero-text-side {
+                align-items: center;
+                text-align: center;
+                padding: 50px 5%;
+            }
+            .hero-text-side h1 { font-size: 2rem; }
+            .hero-cta { align-self: center; }
+            
+            .hero-image-side {
+                height: 300px; /* Give the images a set height on mobile */
+                width: 100%;
+            }
+        }
     </style> 
     
 </head>
@@ -275,12 +380,21 @@
         <a href="#schedule" class="btn">Book Free Quote</a>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Transform Your Home's Exterior</h1>
-        <p>Professional Painting, Tree Care, and Landscaping Services you can rely on.</p>
-        <br><br>
-        <a href="#schedule" class="btn">Schedule Your Free Quote</a>
+    <!-- Modern Split-Screen Hero Section -->
+    <section class="split-hero">
+        <!-- Left Side: Static Text & CTA -->
+        <div class="hero-text-side">
+            <h1>Transform Your Home's Exterior</h1>
+            <p>Professional Painting, Tree Care, and Landscaping Services you can rely on.</p>
+            <a href="#schedule" class="btn hero-cta">Schedule Your Free Quote</a>
+        </div>
+        
+        <!-- Right Side: Automatic Image Carousel -->
+        <div class="hero-image-side">
+            <div class="carousel-image slide-1"></div>
+            <div class="carousel-image slide-2"></div>
+            <div class="carousel-image slide-3"></div>
+        </div>
     </section>
 
     <!-- The Big Three Services Section -->
