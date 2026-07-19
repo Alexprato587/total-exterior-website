@@ -4,44 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Exterior Services | Free Quotes</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* A few simple styles to make it look clean on your Chromebook browser */
-        body { font-family: sans-serif; line-height: 1.6; margin: 0; color: #333; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #f8f9fa; }
         
         
         
-        .btn { background: #e67e22; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        
-        /* Main Services Container */
-        .services { 
-            display: flex; 
-            justify-content: space-around; 
-            padding: 60px 5%; 
-            flex-wrap: wrap; 
-            gap: 25px;
-            margin-bottom: 60px;
-            
-            /* FIX FOR PC WHITE SPACE: 
-               Allows each card to stay tight around its text instead of stretching */
-            align-items: flex-start; 
+        /* 1. TYPOGRAPHY UPGRADE */
+        body { 
+            font-family: 'Open Sans', sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            color: #333; 
+            background-color: #ffffff;
+        }
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            letter-spacing: -0.5px; 
         }
 
-        /* Service Box Styles */
+        /* 2. STICKY HEADER WITH DEPTH */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%; 
+            background: #ffffff; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* 3. INTERACTIVE BUTTONS WITH GLOW */
+        .btn { 
+            background: #e67e22; 
+            color: white; 
+            padding: 12px 24px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.25);
+            transition: all 0.2s ease-in-out;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.45);
+            background: #d35400;
+        }
+
+        /* 5. THE CONTAINER (Controls the side-by-side layout) */
+        .services {
+            display: flex !important; /* Forces elements to sit side-by-side */
+            flex-direction: row;      /* Ensures they go left-to-right */
+            justify-content: center;  /* Centers the row of cards */
+            flex-wrap: wrap;          /* Allows wrapping on smaller screens */
+            gap: 30px;                /* Puts clean breathing room between cards */
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 80px 5%;
+            align-items: flex-start;
+        }
+
+        /* 4. THE INDIVIDUAL CARDS (Controls how wide each box is) */
         .service-card { 
-            width: 30%; 
-            min-width: 280px; 
+            flex: 1;
+            min-width: 280px;         /* Prevents them from getting too skinny */
+            max-width: 350px;         /* Prevents them from getting too wide */
             box-sizing: border-box; 
-            padding: 25px; 
-            border-radius: 8px;
-            border: 3px solid #2e5a44; 
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            
-            /* Smoothly expands the card downward on PC when clicked */
-            transition: all 0.3s ease; 
+            padding: 30px 25px; 
+            border-radius: 12px;
+            border: 1px solid #e1e8e5; 
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease; 
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #2e5a44;
+            box-shadow: 0 16px 35px rgba(46, 90, 68, 0.12);
         }
 
         /* THE FIX: Full-Height "Zoom to Fill" Backgrounds */
@@ -315,6 +356,17 @@
             min-height: 100%;
         }
 
+        .hero-image-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #2e5a44 0%, rgba(46, 90, 68, 0.4) 20%, transparent 100%);
+            z-index: 1; /* Blends the green background softly into the photo */
+        }
+
         .carousel-image {
             position: absolute;
             top: 0;
@@ -369,6 +421,28 @@
                 width: 100%;
             }
         }
+
+        .service-icon-frame {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(46, 90, 68, 0.1); /* Soft brand tint behind icon */
+            color: #2e5a44;
+            border-radius: 8px;
+            margin-right: 10px;
+            font-size: 1.3rem;
+            vertical-align: middle;
+        }
+
+        .section-title-accent {
+            width: 60px;
+            height: 4px;
+            background: #e67e22; /* Orange accent pop */
+            margin: 15px auto 30px auto;
+            border-radius: 2px;
+        }
     </style> 
     
 </head>
@@ -403,7 +477,7 @@
         <!-- House Painting Card -->
         <div class="service-card painting-bg">
             <div class="card-header">
-                <h3>🎨 House Painting</h3>
+                <h3><span class="service-icon-frame">🎨</span> House Painting</h3>
                 <p>Exterior painting that protects your home and boosts curb appeal.</p>
             </div>
             <details class="independent-dropdown">
@@ -417,7 +491,7 @@
         <!-- Tree Work Card -->
         <div class="service-card tree-bg">
             <div class="card-header">
-                <h3>🌳 Tree Work</h3>
+                <h3><span class="service-icon-frame">🌳</span> Tree Work</h3>
                 <p>Safe trimming, removal, and pruning by trained local experts.</p>
             </div>
             <details class="independent-dropdown">
@@ -431,7 +505,7 @@
         <!-- Lawn Care Card -->
         <div class="service-card lawn-bg">
             <div class="card-header">
-                <h3>🏡 Lawn Care</h3>
+                <h3><span class="service-icon-frame">🏡</span> Lawn Care</h3>
                 <p>Mowing, edging, and seasonal maintenance to keep things pristine.</p>
             </div>
             <details class="independent-dropdown">
@@ -448,6 +522,7 @@
     <section class="trust-section">
         <div class="trust-container">
             <h2>Why Property Owners Choose Us</h2>
+            <div class="section-title-accent"></div>
             <p class="trust-subtitle">Professional craftsmanship and reliable service you can depend on for your home or business.</p>
             
             <div class="badge-grid">
