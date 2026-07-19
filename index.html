@@ -7,7 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         
-        
+        html {
+            scroll-behavior: smooth;
+        }
         
         /* 1. TYPOGRAPHY UPGRADE */
         body { 
@@ -443,14 +445,69 @@
             margin: 15px auto 30px auto;
             border-radius: 2px;
         }
+        /* High-End Text Gradient Effect */
+        .text-gradient {
+            background: linear-gradient(135deg, #ffb775 0%, #e67e22 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* ========================================== */
+        /*          PREMIUM TEXT-LOGO STYLING         */
+        /* ========================================== */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; /* Extra bold for that architectural/solid feel */
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* "TOTAL" - Clean, dark slate black */
+        .logo-main {
+            color: #222222;
+        }
+
+        /* "EXTERIOR" - Core brand green */
+        .logo-sub {
+            color: #2e5a44;
+        }
+
+        /* "LLC" - Styled as a sharp micro-badge */
+        .logo-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            background: #e67e22; /* Matches your action button orange */
+            color: white;
+            padding: 3px 6px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            margin-left: 2px;
+            align-self: center;
+        }
+
+        /* Subtle lift animation when you hover over the brand name */
+        .logo-wrapper {
+            transition: transform 0.2s ease;
+        }
+        .logo-wrapper:hover {
+            transform: translateY(-1px);
+        }
     </style> 
     
 </head>
 <body>
 
-    <!-- Header / Nav -->
     <header>
-        <h2>Total Exterior LLC</h2>
+        <div class="logo-wrapper" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+            <span class="logo-main">TOTAL</span>
+            <span class="logo-sub">EXTERIOR</span>
+            <span class="logo-badge">LLC</span>
+        </div>
         <a href="#schedule" class="btn">Book Free Quote</a>
     </header>
 
@@ -458,7 +515,7 @@
     <section class="split-hero">
         <!-- Left Side: Static Text & CTA -->
         <div class="hero-text-side">
-            <h1>Transform Your Home's Exterior</h1>
+            <h1>Transform Your Home's <span class="text-gradient">Exterior</span></h1>
             <p>Professional Painting, Tree Care, and Landscaping Services you can rely on.</p>
             <a href="#schedule" class="btn hero-cta">Schedule Your Free Quote</a>
         </div>
