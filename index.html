@@ -137,6 +137,44 @@
             margin-top: 5px;
             font-style: italic;
         }
+        /* ========================================== */
+        /*         MOBILE RESPONSIVE STYLES           */
+        /* ========================================== */
+        @media (max-width: 768px) {
+            
+            /* 1. Reset the Services Grid to a Single Column */
+            .services {
+                flex-direction: column; /* Stacks cards vertically instead of horizontally */
+                align-items: center;
+                height: auto; /* REMOVES the locked height so cards can grow freely on mobile */
+                padding: 40px 5%;
+                gap: 30px;
+            }
+
+            /* 2. Make each card fill the width of the phone screen */
+            .service-card {
+                width: 100%;
+                max-width: 400px; /* Keeps them from getting too wide on bigger phones */
+                min-height: auto; /* Lets the card body fit mobile text perfectly */
+            }
+
+            /* 3. Adjust the dropdown text height so it doesn't clip on small screens */
+            .dropdown-content {
+                height: auto; /* Lets the text expand naturally down without scrollbars */
+            }
+
+            /* 4. Stack the footer columns vertically */
+            .footer-container {
+                flex-direction: column;
+                text-align: center; /* Centers contact info for easier thumb-tapping */
+                gap: 20px;
+            }
+            
+            /* 5. Clean up any site headers/hero sections for mobile text sizes */
+            .hero h1 {
+                font-size: 1.8rem; /* Shrinks huge desktop titles so they don't break lines weirdly */
+            }
+        }
     </style> 
     
 </head>
