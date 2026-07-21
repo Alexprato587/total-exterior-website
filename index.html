@@ -353,25 +353,28 @@
 
         /* Mobile Adjustment: Stack them vertically so it doesn't squish */
         @media (max-width: 768px) {
+            /* 1. Prevent the green hero container background from bleeding through the cutout */
             .split-hero {
                 flex-direction: column;
+                background: transparent !important; /* Lets the crisp white page show under the curve */
             }
+
+            /* Wrap text side so it retains its forest green background */
             .hero-text-side {
+                background: #2e5a44; 
                 align-items: center;
                 text-align: center;
-                padding: 50px 5% 30px 5%; /* Adjusted bottom padding for cleaner flow */
+                padding: 50px 5% 30px 5%;
             }
-            .hero-text-side h1 { font-size: 2rem; }
-            .hero-cta { align-self: center; }
-            
+
             .hero-image-side {
-                /* 1. RESET DESKTOP MIN-HEIGHT */
                 min-height: 420px !important; 
                 height: 420px !important; 
                 width: 100%;
-                position: relative; /* Ensures absolute children (carousel images) anchor properly */
-                /* CREATES A SOFT ARCH AT THE BOTTOM OF THE SLIDESHOW */
-                clip-path: ellipse(120% 100% at 50% 0%);
+                position: relative;
+                
+                /* 2. DOWNTURNED CURVE: Sweeps smoothly down into the page */
+                clip-path: ellipse(120% 85% at 50% 15%);
             }
 
             /* REORIENT GRADIENT & ADD BOTTOM WHITE FADE FOR MOBILE */
