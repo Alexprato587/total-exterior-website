@@ -372,9 +372,13 @@
                 position: relative; /* Ensures absolute children (carousel images) anchor properly */
             }
 
-            /* 2. REORIENT GRADIENT: Fades green from TOP to BOTTOM on mobile */
+            /* REORIENT GRADIENT & ADD BOTTOM WHITE FADE FOR MOBILE */
             .hero-image-side::before {
-                background: linear-gradient(180deg, #2e5a44 0%, rgba(46, 90, 68, 0.4) 25%, transparent 100%);
+                background: 
+                    /* 1. Green fade from the top */
+                    linear-gradient(180deg, #2e5a44 0%, rgba(46, 90, 68, 0.4) 25%, transparent 60%),
+                    /* 2. Pure white fade from the bottom into the page */
+                    linear-gradient(0deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 20%, transparent 50%);
             }
         }
 
