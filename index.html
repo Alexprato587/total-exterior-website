@@ -370,6 +370,8 @@
                 height: 420px !important; 
                 width: 100%;
                 position: relative; /* Ensures absolute children (carousel images) anchor properly */
+                /* CREATES A SOFT ARCH AT THE BOTTOM OF THE SLIDESHOW */
+                clip-path: ellipse(120% 100% at 50% 0%);
             }
 
             /* REORIENT GRADIENT & ADD BOTTOM WHITE FADE FOR MOBILE */
