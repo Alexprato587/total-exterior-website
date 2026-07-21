@@ -200,6 +200,20 @@
         /*         MOBILE RESPONSIVE STYLES           */
         /* ========================================== */
         @media (max-width: 768px) {
+
+            /* FIX FOR HEADER "BOOK FREE QUOTE" BUTTON ON MOBILE */
+            header {
+                padding: 12px 4% !important; /* Slims down the top/bottom header bar */
+            }
+            header .btn {
+                padding: 6px 12px !important;  /* Reduces button height & width */
+                font-size: 0.75rem !important; /* Makes text small & sleek */
+                letter-spacing: -0.2px;
+                white-space: nowrap;          /* Prevents text from breaking onto two lines */
+            }
+            .logo-wrapper {
+                font-size: 1.1rem !important;  /* Slightly scales down logo text so both fit side-by-side */
+            }
             
             .services {
                 flex-direction: column; 
@@ -576,6 +590,7 @@
                 width: 100%;
                 min-height: 300px;
             }
+            
         }
     </style> 
     
@@ -734,7 +749,7 @@
                 <h4>Get In Touch</h4>
                 <p>📞 Phone: (555) 123-4567</p>
                 <p>✉️ Email: info@exteriorservices.com</p>
-                <p>📍 Serving our local community and surrounding areas</p>
+                <p>📍 Serving your local community and surrounding areas</p>
             </div>
 
             <!-- Right Column: Fine Print & Details -->
@@ -750,7 +765,7 @@
         <!-- The Bottom Copyright Strip -->
         <div class="footer-bottom">
             <p>&copy; 2026 Premium Exterior Services. All rights reserved.</p>
-            <p class="fine-print">Licensed, bonded, and fully insured for your protection. Free estimates are subject to property inspection.</p>
+            <p class="fine-print">Free estimates are subject to property inspection.</p>
         </div>
     </footer>
 
