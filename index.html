@@ -359,14 +359,19 @@
             .hero-text-side {
                 align-items: center;
                 text-align: center;
-                padding: 50px 5%;
+                padding: 50px 5% 30px 5%; /* Adjusted bottom padding for cleaner flow */
             }
             .hero-text-side h1 { font-size: 2rem; }
             .hero-cta { align-self: center; }
             
             .hero-image-side {
-                height: 300px; /* Give the images a set height on mobile */
+                height: 420px; /* 1. INCREASED HEIGHT: Gives photos dramatic mobile impact */
                 width: 100%;
+            }
+
+            /* 2. REORIENT GRADIENT: Fades green from TOP to BOTTOM on mobile */
+            .hero-image-side::before {
+                background: linear-gradient(180deg, #2e5a44 0%, rgba(46, 90, 68, 0.4) 25%, transparent 100%);
             }
         }
 
