@@ -372,16 +372,20 @@
                 height: 420px !important; 
                 width: 100%;
                 position: relative;
-                
-                /* 2. DOWNTURNED CURVE: Sweeps smoothly down into the page */
-                clip-path: ellipse(120% 85% at 50% 15%);
+                /* Remove clip-path so there's no color clash gap */
+                clip-path: none !important; 
             }
 
-            /* REORIENT GRADIENT & ADD BOTTOM WHITE FADE FOR MOBILE */
+            /* MULTI-STAGE GRADIENT: Green at top -> Photo middle -> Soft tint at bottom */
             .hero-image-side::before {
-                background: 
-                    /* 1. Green fade from the top */
-                    linear-gradient(180deg, #2e5a44 0%, rgba(46, 90, 68, 0.4) 25%, transparent 60%);
+                background: linear-gradient(
+                    180deg, 
+                    #2e5a44 0%,                   /* 1. Green top matching text side */
+                    rgba(46, 90, 68, 0.3) 20%,     /* 2. Soft transition into photo */
+                    transparent 50%,              /* 3. Clean photo view in middle */
+                    rgba(255, 255, 255, 0.7) 80%, /* 4. Soft white/tint build-up */
+                    #ffffff 100%                  /* 5. Solid blend into services section */
+                ) !important;
             }
         }
 
