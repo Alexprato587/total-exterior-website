@@ -475,33 +475,7 @@
             overflow: hidden; /* Keeps the shapes from spilling off the page */
         }
 
-        /* Big Abstract Brand Circle (Top Left) */
-        .editorial-services-section::before {
-            content: "";
-            position: absolute;
-            top: -100px; /* Shifted to ensure it's on screen */
-            left: -150px;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            /* Boosted opacity from 4% to 8% so you can clearly see the green tint */
-            background: radial-gradient(circle, rgba(46, 90, 68, 0.20) 0%, rgba(46, 90, 68, 0.05) 50%, transparent 75%);            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Big Abstract Brand Circle (Bottom Right) */
-        .editorial-services-section::after {
-            content: "";
-            position: absolute;
-            bottom: -150px;
-            right: -150px;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            /* Boosted opacity to 8% */
-            background: radial-gradient(circle, rgba(46, 90, 68, 0.20) 0%, rgba(46, 90, 68, 0.05) 50%, transparent 75%);            z-index: 1;
-            pointer-events: none;
-        }
+        
         /* Make sure your content layers safely over the background shapes */
         .section-header, .row-container {
             position: relative !important;
