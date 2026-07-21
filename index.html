@@ -365,8 +365,11 @@
             .hero-cta { align-self: center; }
             
             .hero-image-side {
-                height: 420px; /* 1. INCREASED HEIGHT: Gives photos dramatic mobile impact */
+                /* 1. RESET DESKTOP MIN-HEIGHT */
+                min-height: 420px !important; 
+                height: 420px !important; 
                 width: 100%;
+                position: relative; /* Ensures absolute children (carousel images) anchor properly */
             }
 
             /* 2. REORIENT GRADIENT: Fades green from TOP to BOTTOM on mobile */
